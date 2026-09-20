@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="apple-itunes-app" content="app-id=6814169072">
+  <title>拆开一封信</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#fbf5e8;color:#332d27;font:17px/1.7 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif}
+    main{max-width:520px;margin:auto;padding:72px 24px;text-align:center}.seal{width:84px;height:84px;margin:auto;border-radius:50%;display:grid;place-items:center;background:#8c2e29;color:#fff;font:34px serif;box-shadow:0 10px 28px #8c2e2930}
+    h1{font:34px/1.3 Georgia,"Songti SC",serif;margin:28px 0 8px}p{margin:8px 0;color:#756a60}.actions{display:grid;gap:12px;margin:36px 0 24px}
+    a{display:block;padding:14px 20px;border-radius:999px;text-decoration:none;font-weight:650}.open{background:#8c2e29;color:#fff}.store{background:#f2e7d3;color:#332d27}.privacy{font-size:13px}
+  </style>
+</head>
+<body><main>
+  <div class="seal">信</div>
+  <h1>有人给你写了一封信</h1>
+  <p>打开「信」，输入你们约定的口令。</p>
+  <div class="actions">
+    <a class="open" id="open" href="#">在「信」里拆开</a>
+    <a class="store" href="https://apps.apple.com/app/id6814169072">还没安装？前往 App Store</a>
+  </div>
+  <p class="privacy">密文只在地址的 # 后面，不会发送到网页或服务器。</p>
+</main>
+<script>
+  const token = location.hash.slice(1);
+  const valid = /^[A-Za-z0-9_-]+$/.test(token);
+  const button = document.getElementById('open');
+  if (valid) {
+    button.href = `xinletters://open#${token}`;
+  } else {
+    button.textContent = '这封信的链接不完整';
+    button.removeAttribute('href');
+    button.style.opacity = '.45';
+  }
+</script>
+</body>
+</html>
